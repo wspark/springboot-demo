@@ -11,7 +11,7 @@ public class DemoApplication {
 
 	@RequestMapping("/")
 	public String home() {
-	  return "Hello Docker World deploy by tekton-v0.4";
+	  return "Hello Docker World deploy by tekton-v0.5";
 	}
 
 	public static void main(String[] args) {
