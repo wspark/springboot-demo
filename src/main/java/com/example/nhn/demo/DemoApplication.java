@@ -18,18 +18,18 @@ public class DemoApplication {
 	
 	@RequestMapping("/")
 	public String home() {		
-	  return "Hello Docker World deploy by tekton-v0.7";
+	  return "Hello Docker World deploy by tekton-v0.8";
 	}
 
 
 	@RequestMapping("/log")
 	public String log() {	
-		List<Integer> numbersList = Arrays.asList(1, 2, 3, 4, 5);	
-		int lastNumber = numbersList.get(5);
+	List<Integer> numbersList = Arrays.asList(1, 2, 3, 4, 5);	
+	int lastNumber = numbersList.get(5);
 
-		System.out.println("lastNumber =" + lastNumber);
+	System.out.println("lastNumber =" + lastNumber);
 
-		logger.trace("Trace Level 테스트");
+	logger.trace("Trace Level 테스트");
         logger.debug("DEBUG Level 테스트");
         logger.info("INFO Level 테스트");
         logger.warn("Warn Level 테스트");
