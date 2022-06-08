@@ -1,4 +1,4 @@
-package com.example.nhn.demo;
+package com.example.rock.demo;
 
 
 import java.util.Arrays;
