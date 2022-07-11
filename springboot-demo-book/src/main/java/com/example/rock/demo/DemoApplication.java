@@ -6,16 +6,23 @@ import java.util.List;
 
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
 @RestController
+@RequestMapping(value = "/api/sample")
+@CrossOrigin("*")
 public class DemoApplication {
 
 	private final org.slf4j.Logger logger = LoggerFactory.getLogger(this.getClass());
 	
+	@RequestMapping("/")
+	public String home(){
+		return "this is book service root";
+	}
 
 	@RequestMapping("/book")
 	public String book() {	
