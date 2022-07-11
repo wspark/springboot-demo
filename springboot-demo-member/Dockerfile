@@ -1,7 +1,7 @@
-FROM wspark83/springboot:openjdk8
+FROM docker.io/wspark83/springboot:openjdk8
 
 ARG JAR_FILE=target/*.jar
 
-COPY ${JAR_FILE} app.jar
+COPY ${JAR_FILE} /deployments/app.jar
 
-ENTRYPOINT ["java","-jar","/app.jar","--debug"]
+#ENTRYPOINT ["java","-jar","/app.jar","--debug"]
