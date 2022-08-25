@@ -42,7 +42,7 @@ public class LibraryController {
   //  String memberUrl = "http://springboot-demo-member-wspark-test.apps.ocp4.local/api/library/member/1";
   String memberUrl = "http://springboot-demo-member.wspark-test.svc.cluster.local:8080/api/library/member/1";
 
-    @GetMapping("/book/rest/1")
+    @GetMapping("/book/rest")
     public String getMemberList(){
          HttpHeaders headers = new HttpHeaders();
        //  headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
