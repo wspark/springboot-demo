@@ -46,6 +46,14 @@ public class LibraryService {
         return memberRepository.findAll();
     }
 
+    public Member readMember(Long id) {        
+        Optional<Member> member = memberRepository.findById(id);
+        if (member.isPresent()) {
+            return member.get();
+        }
+        throw new EntityNotFoundException("Cant find any member under given id");
+    }    
+
     public void deleteMembers(Long id){
         memberRepository.deleteById(id);
     }

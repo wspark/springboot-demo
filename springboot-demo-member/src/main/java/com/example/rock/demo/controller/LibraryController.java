@@ -41,6 +41,12 @@ public class LibraryController {
         return ResponseEntity.ok(libraryService.readMembers());
     }
 
+    @Timed(value = "get-member")
+    @GetMapping("/member/{memberId}")
+    public ResponseEntity<Member> readMember (@PathVariable Long memberId) {
+        return ResponseEntity.ok(libraryService.readMember(memberId));
+    }
+
     @Timed(value = "patch-member")
     @PatchMapping("/member/{memberId}")
     public ResponseEntity<Member> updateMember (@RequestBody MemberCreationRequest request, @PathVariable Long memberId) {
