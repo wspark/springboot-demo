@@ -40,7 +40,7 @@ public class LibraryController {
     @Autowired
     RestTemplate restTemplate;
   //  String memberUrl = "http://springboot-demo-member-wspark-test.apps.ocp4.local/api/library/member/1";
-  String memberUrl = "http://springboot-demo-member.wspark-test.svc.cluster.local:8080/api/library/member/1";
+  String memberUrl = "http://springboot-demo-member.wspark-test.svc.cluster.local:9060/api/library/member/1";
 
     @GetMapping("/book/rest")
     public String getMemberList(){
