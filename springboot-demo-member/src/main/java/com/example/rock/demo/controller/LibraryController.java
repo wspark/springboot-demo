@@ -8,6 +8,9 @@ import com.example.rock.demo.model.Member;
 import com.example.rock.demo.model.request.MemberCreationRequest;
 import com.example.rock.demo.service.LibraryService;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,6 +31,7 @@ import java.util.List;
 public class LibraryController {
     
     private final LibraryService libraryService;
+    private static final Logger LOGGER = LogManager.getLogger(LibraryController.class);
 
     @Timed(value = "post-member")
     @PostMapping("/member")
@@ -38,12 +42,14 @@ public class LibraryController {
     @Timed(value = "get-member")
     @GetMapping("/member")
     public ResponseEntity<List<Member>> readMembers () {
+        LOGGER.info("/member/all request!!");
         return ResponseEntity.ok(libraryService.readMembers());
     }
 
     @Timed(value = "get-member")
-    @GetMapping("/member/{memberId}")
+    @GetMapping("/member/{memberId}")    
     public ResponseEntity<Member> readMember (@PathVariable Long memberId) {
+        LOGGER.info("/member/{memberId} request!!");
         return ResponseEntity.ok(libraryService.readMember(memberId));
     }
 
