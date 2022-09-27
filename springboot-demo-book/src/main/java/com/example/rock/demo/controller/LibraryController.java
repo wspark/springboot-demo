@@ -8,6 +8,9 @@ import com.example.rock.demo.model.Book;
 import com.example.rock.demo.model.request.BookCreationRequest;
 import com.example.rock.demo.service.LibraryService;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,6 +39,7 @@ import java.util.List;
 public class LibraryController {
     
     private final LibraryService libraryService;
+    private static final Logger LOGGER = LogManager.getLogger(LibraryController.class);
 
     @Autowired
     RestTemplate restTemplate;
@@ -47,13 +51,17 @@ public class LibraryController {
          HttpHeaders headers = new HttpHeaders();
        //  headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
          HttpEntity <String> entity = new HttpEntity<String>(headers);
-
+         LOGGER.info("/book/rest request!!");
+         LOGGER.info(memberUrl);         
          return restTemplate.exchange(memberUrl, HttpMethod.GET, entity, String.class).getBody();      
     }
 
     @Timed(value = "get-book")
     @GetMapping("/book")
     public ResponseEntity readBooks(@RequestParam(required = false) String isbn) {
+
+        LOGGER.info("/book/all request!!");
+
         if (isbn == null) {
             return ResponseEntity.ok(libraryService.readBooks());
         }
@@ -63,6 +71,7 @@ public class LibraryController {
     @Timed(value = "get-bookId")
     @GetMapping("/book/{bookId}")
     public ResponseEntity<Book> readBook (@PathVariable Long bookId) {
+        LOGGER.info("/book/{bookId} request!!");
         return ResponseEntity.ok(libraryService.readBook(bookId));
     }
 /*
