@@ -4,4 +4,10 @@ ARG JAR_FILE=deployments/member-0.0.1-SNAPSHOT.jar
 
 COPY ${JAR_FILE} /deployments/app.jar
 
+USER root
+
+RUN echo '172.16.46.100  gitlab.ocp4.local' > /etc/host.aliases
+RUN export HOSTALIASES=/etc/host.aliases
+#RUN echo '172.16.46.100  gitlab.ocp4.local' >> /etc/hosts
+
 #ENTRYPOINT ["java","-jar","/app.jar","--debug"]
