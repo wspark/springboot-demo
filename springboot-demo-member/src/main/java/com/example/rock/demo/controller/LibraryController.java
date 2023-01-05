@@ -66,4 +66,17 @@ public class LibraryController {
         return ResponseEntity.ok().build();
     }
 
+    @Timed(value = "delay-test")
+    @GetMapping("/delay/{countNum}")
+    public void deplyMethod (@PathVariable Long countNum ) {
+        Long secondsToSleep = countNum;
+        try {
+            LOGGER.info("delay "+ countNum + " senconds request!! Start");
+            Thread.sleep(secondsToSleep * 1000);
+            LOGGER.info("delay "+ countNum + " senconds request!! End");
+          } catch (InterruptedException ex) {
+            ex.printStackTrace();
+          }
+    }
+
 }
