@@ -3,6 +3,8 @@ package com.example.rock.demo.controller;
 
 import io.micrometer.core.annotation.Timed;
 import lombok.RequiredArgsConstructor;
+
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import com.example.rock.demo.model.Member;
 import com.example.rock.demo.model.request.MemberCreationRequest;
@@ -18,11 +20,13 @@ import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping(value = "/api/library")
@@ -78,5 +82,15 @@ public class LibraryController {
             ex.printStackTrace();
           }
     }
+    @GetMapping("/listHeaders")
+    public ResponseEntity<String> listAllHeaders(
+    @RequestHeader Map<String, String> headers) {
+        headers.forEach((key, value) -> {
+            LOGGER.info(String.format("Header '%s' = %s", key, value));
+        });
+
+    return new ResponseEntity<String>(
+      String.format("Listed %d headers", headers.size()), HttpStatus.OK);
+}
 
 }

@@ -6,7 +6,7 @@ COPY ${JAR_FILE} /deployments/app.jar
 
 USER root
 
-RUN echo '172.16.46.100  gitlab.ocp4.local' > /etc/host.aliases
+RUN echo '172.16.46.100  gitlab.ocp4.local' > /host.aliases
 RUN export HOSTALIASES=/etc/host.aliases
 #RUN echo '172.16.46.100  gitlab.ocp4.local' >> /etc/hosts
 
