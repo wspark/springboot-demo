@@ -94,6 +94,6 @@ public class LibraryController {
    }
    @GetMapping("/info")
    public String info(){
-    return "Spring Boot v1 test !!!!!!";
+    return "Spring Boot v2 test !!!!!!";
    }
 }
