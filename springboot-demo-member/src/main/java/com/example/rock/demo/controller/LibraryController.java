@@ -88,9 +88,12 @@ public class LibraryController {
         headers.forEach((key, value) -> {
             LOGGER.info(String.format("Header '%s' = %s", key, value));
         });
-
+    
     return new ResponseEntity<String>(
       String.format("Listed %d headers", headers.size()), HttpStatus.OK);
-}
-
+   }
+   @GetMapping("/info")
+   public String info(){
+    return "Spring Boot v1 test !!!!!!";
+   }
 }
