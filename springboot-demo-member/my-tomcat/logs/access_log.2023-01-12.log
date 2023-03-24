@@ -1,3 +1,0 @@
-[12/Jan/2023:16:50:08 +0900] 0:0:0:0:0:0:0:1 GET /api/library/listHeaders HTTP/1.1 200 (90 ms)
-[12/Jan/2023:16:54:37 +0900] 0:0:0:0:0:0:0:1 GET /api/library/listHeaders HTTP/1.1 200 (76 ms)
-[12/Jan/2023:16:54:39 +0900] 0:0:0:0:0:0:0:1 GET /api/library/listHeaders HTTP/1.1 200 (27 ms)
