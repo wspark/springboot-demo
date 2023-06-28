@@ -94,6 +94,8 @@ public class LibraryController {
    }
    @GetMapping("/info")
    public String info(){
-    return "Spring Boot v2 test !!!!!!";
+    String hostName = System.getenv("HOSTNAME");
+  //  return String.format("Hostname = %d"  , hostName);
+    return String.format("Hostname = %s"  , hostName);
    }
 }
