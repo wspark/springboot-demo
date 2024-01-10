@@ -10,8 +10,12 @@ import com.example.rock.demo.model.Member;
 import com.example.rock.demo.model.request.MemberCreationRequest;
 import com.example.rock.demo.service.LibraryService;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+//import org.apache.logging.log4j.LogManager;
+//import org.apache.logging.log4j.Logger;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+//import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -32,11 +36,12 @@ import java.util.Map;
 @RequestMapping(value = "/api/library")
 @RequiredArgsConstructor
 @CrossOrigin("*")
+
 public class LibraryController {
     
     private final LibraryService libraryService;
-    private static final Logger LOGGER = LogManager.getLogger(LibraryController.class);
-
+   // private static final Logger LOGGER = LogManager.getLogger(LibraryController.class);
+    private final Logger LOGGER = LoggerFactory.getLogger(LibraryController.class);
     @Timed(value = "post-member")
     @PostMapping("/member")
     public ResponseEntity<Member> createMember (@RequestBody MemberCreationRequest request) {
@@ -92,10 +97,12 @@ public class LibraryController {
     return new ResponseEntity<String>(
       String.format("Listed %d headers", headers.size()), HttpStatus.OK);
    }
-   @GetMapping("/info")
-   public String info(){
+   @GetMapping("/info/{param}")
+   public String info(@PathVariable String param ){
     String hostName = System.getenv("HOSTNAME");
   //  return String.format("Hostname = %d"  , hostName);
+        LOGGER.info("hostname : "  + hostName);
+        LOGGER.info("param : "  + param);
     return String.format("Hostname = %s"  , hostName);
    }
 }
