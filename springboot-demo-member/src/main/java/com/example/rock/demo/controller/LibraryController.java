@@ -102,7 +102,7 @@ public class LibraryController {
     String hostName = System.getenv("HOSTNAME");
   //  return String.format("Hostname = %d"  , hostName);
         LOGGER.info("hostname : "  + hostName);
-        LOGGER.info("param : "  + param);
+        LOGGER.info("<param>"+param+"/<param>");
     return String.format("Hostname = %s"  , hostName);
    }
 }
