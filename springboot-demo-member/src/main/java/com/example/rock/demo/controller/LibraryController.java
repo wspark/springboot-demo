@@ -29,8 +29,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.nio.charset.Charset;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 @RestController
 @RequestMapping(value = "/api/library")
@@ -104,5 +106,17 @@ public class LibraryController {
         LOGGER.info("hostname : "  + hostName);
         LOGGER.info("<param>"+param+"</param>");
     return String.format("Hostname = %s"  , hostName);
+   }
+
+   @GetMapping("/log/{lenth}")
+   public String log(@PathVariable Integer lenth ){
+  //  String hostName = System.getenv("HOSTNAME");
+  //  return String.format("Hostname = %d"  , hostName);
+    byte[] array = new byte[lenth]; // length is bounded by 7
+    new Random().nextBytes(array);
+    String generatedString = new String(array, Charset.forName("UTF-8"));
+        LOGGER.info("<param>"+generatedString+"</param>");
+        String lengthString = Integer.toString(lenth);
+        return String.format("%s",  lengthString);
    }
 }
