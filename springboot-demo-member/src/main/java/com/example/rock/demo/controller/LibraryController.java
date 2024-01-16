@@ -115,7 +115,7 @@ public class LibraryController {
     byte[] array = new byte[lenth]; // length is bounded by 7
     new Random().nextBytes(array);
     String generatedString = new String(array, Charset.forName("UTF-8"));
-        LOGGER.info("<param>"+generatedString+"</param>");
+        LOGGER.info("<lenth>"+generatedString+"</lenth>");
         String lengthString = Integer.toString(lenth);
         return String.format("%s",  lengthString);
    }
