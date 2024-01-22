@@ -114,9 +114,10 @@ public class LibraryController {
   //  return String.format("Hostname = %d"  , hostName);
     byte[] array = new byte[lenth]; // length is bounded by 7
     new Random().nextBytes(array);
-    String generatedString = new String(array, Charset.forName("UTF-8"));
-        LOGGER.info("<lenth>"+generatedString+"</lenth>");
+    String generatedString = new String(array, Charset.forName("UTF-8"));      
         String lengthString = Integer.toString(lenth);
+        LOGGER.info("<uri>"+lengthString+"</uri>");
+        LOGGER.info("<lenth>"+generatedString+"</lenth>");    
         return String.format("%s",  lengthString);
    }
 }
