@@ -79,18 +79,21 @@ public class LibraryController {
 
     @Timed(value = "delay-test")
     @GetMapping("/delay/{countNum}")
-    public void deplyMethod (@PathVariable Long countNum ) {
+    public String deplyMethod (@PathVariable Long countNum ) {
         Long secondsToSleep = countNum;
+        String hostName = System.getenv("HOSTNAME");
         try {
             LOGGER.info("delay "+ countNum + " senconds request!! Start");
             Thread.sleep(secondsToSleep * 1000);
             LOGGER.info("delay "+ countNum + " senconds request!! End");
+            
           } catch (InterruptedException ex) {
             ex.printStackTrace();
           }
+          return String.format("Hostname = %s"  , hostName);
     }
     @GetMapping("/listHeaders")
-    public ResponseEntity<String> listAllHeaders(
+    public ResponseEntity<String> listAllHeaders(        
     @RequestHeader Map<String, String> headers) {
         headers.forEach((key, value) -> {
             LOGGER.info(String.format("Header '%s' = %s", key, value));
